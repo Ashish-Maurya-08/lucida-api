@@ -1,0 +1,20 @@
+{
+  "name": "lucida",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lucida-test.js",
+  "type": "module",
+  "scripts": {
+    "test": "node lucida-test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "lucida": "^2.0.0-54",
+    "lucide-react": "^0.544.0",
+    "ts-node": "^10.9.2"
+  }
+}

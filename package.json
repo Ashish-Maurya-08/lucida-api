@@ -2,10 +2,10 @@
   "name": "lucida",
   "version": "1.0.0",
   "description": "",
-  "main": "lucida-test.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "node lucida-test.js"
+    "test": "node server.js"
   },
   "keywords": [],
   "author": "",

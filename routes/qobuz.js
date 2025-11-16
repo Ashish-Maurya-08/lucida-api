@@ -1,6 +1,6 @@
 
 import dotenv from 'dotenv';
-import Qobuz from 'lucida/streamers/qobuz';
+import Qobuz from '../lucida/build/streamers/qobuz/main.js';
 import express from 'express';
 
 const route = express.Router();
@@ -21,6 +21,8 @@ route.get('/test', (req, res) => {
 route.get('/search', async (req, res) => {
   const { query } = req.query;
   const result = await client.search(query);
+  console.log(result);
+  
   res.send(result.tracks);
 }); 
 
@@ -29,10 +31,12 @@ route.get('/stream', async (req, res) => {
   const { url } = req.query;
   const result = await client.getByUrl(url);
   const stream = await result.getStream();
-  res.setHeader('Content-Type', stream.mimeType);
-  res.setHeader('Content-Length', stream.sizeBytes);
-  res.setHeader("Accept-Ranges", "bytes");
-  stream.stream.pipe(res);
+  res.send({ streamUrl: stream.trackUrl });
+  
+  // res.setHeader('Content-Type', stream.mimeType);
+  // res.setHeader('Content-Length', stream.sizeBytes);
+  // res.setHeader("Accept-Ranges", "bytes");
+  // stream.stream.pipe(res);
 });
 
 export default route;

@@ -21,17 +21,23 @@ route.get('/test', (req, res) => {
 route.get('/search', async (req, res) => {
   const { query } = req.query;
   const result = await client.search(query);
-  console.log(result);
   
-  res.send(result.tracks);
+  res.send(result);
 }); 
 
 
 route.get('/stream', async (req, res) => {
   const { url } = req.query;
   const result = await client.getByUrl(url);
-  const stream = await result.getStream();
-  res.send({ streamUrl: stream.trackUrl });
+  
+  if (result.type == 'track'){
+    const stream = await result.getStream();
+    res.send(stream);
+  }
+  else {
+    console.error('URL unrecognised');
+    res.status(400).send('URL unrecognised');
+  }
   
   // res.setHeader('Content-Type', stream.mimeType);
   // res.setHeader('Content-Length', stream.sizeBytes);

@@ -207,9 +207,7 @@ _Qobuz_instances = new WeakSet(), _Qobuz_get = function _Qobuz_get(url, params) 
         if (trackFileResponse.sample == true)
             throw new Error(`Could not get non-sample file. Make sure the track isn't purchase-only.`);
 
-        return {
-            trackUrl: trackFileResponse.url
-        }
+        return trackFileResponse.url;
         // const streamResponse = yield fetch(trackFileResponse.url, { dispatcher: this.dispatcher });
         // return {
         //     mimeType: trackFileResponse.mime_type,

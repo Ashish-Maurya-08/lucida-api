@@ -45,4 +45,11 @@ route.get('/stream', async (req, res) => {
   // stream.stream.pipe(res);
 });
 
+
+route.get('/album', async (req, res) => {
+  const { url } = req.query;
+  const result = await client.getByUrl(url);
+  res.send(result);
+});
+
 export default route;
